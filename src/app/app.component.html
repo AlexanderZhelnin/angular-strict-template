@@ -1,0 +1,28 @@
+<app-table [rows]="rows" [columns]="columns"></app-table>
+
+<!-- Шаблон для отображения пользователя -->
+<ng-template [appCell1]="cell1" let-cell >
+  <div>
+    <p>{{cell.login}}</p>
+    <p>{{cell.name}}</p>
+  </div>
+</ng-template>
+
+<!-- Шаблон для отображения разрешений пользователя -->
+<ng-template [appCell2]="cell2" let-cell>
+  <div>
+    <p>читать: {{cell.read ? 'Да' : 'Нет'}}</p>
+    <p>записывать: {{cell.write ? 'Да' : 'Нет'}}</p>
+  </div>
+</ng-template>
+
+<!-- Шаблон для отображения специальной строки -->
+<ng-template [appRow]="rowSpan" let-row>
+  <tr>
+    <td colspan="2" bgcolor="#FBF0DB" style="position: sticky; top:0">
+      <div>
+        {{row.cells[0].value}}
+      </div>
+    </td>
+  </tr>
+</ng-template>

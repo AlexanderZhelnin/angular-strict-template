@@ -1,0 +1,31 @@
+<table>
+  <thead>
+    <tr>
+      <th *ngFor="let col of columns">
+        {{col.name}}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <ng-container *ngFor="let row of rows">
+
+      <ng-container *ngTemplateOutlet="row.template??defaultRowTemplate;context: {$implicit: row}">
+      </ng-container>
+
+    </ng-container>
+  </tbody>
+</table>
+
+<ng-template #defaultCellTemplate let-cell>
+  {{cell}}
+</ng-template>
+
+<ng-template #defaultRowTemplate let-row>
+  <tr>
+    <td *ngFor="let cell of row.cells">
+      <ng-container *ngTemplateOutlet="cell.template??defaultCellTemplate;context: {$implicit: cell.value}">
+      </ng-container>
+    </td>
+  </tr>
+</ng-template>
